@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071426">
+  <meta name="description" content="Florida State Roleplay is an ER:LC roleplay community. Explore departments, learn how to join, and get ready to serve.">
+  <title>Florida State Roleplay | ER:LC</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+    :root{--bg:#071426;--panel:#0d2038;--panel2:#102945;--blue:#2387e8;--cyan:#55c8ff;--white:#f4f8ff;--muted:#a9bbd0;--line:rgba(174,205,238,.15)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+    .topbar{height:76px;display:flex;align-items:center;border-bottom:1px solid var(--line);background:rgba(7,20,38,.92);position:sticky;top:0;z-index:10;backdrop-filter:blur(14px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.04em}
+    .crest{height:42px;width:42px;border-radius:12px;background:linear-gradient(145deg,#2d9cff,#1253a0);display:grid;place-items:center;font-family:'Barlow Condensed';font-size:22px;font-weight:900;box-shadow:0 8px 24px #087be64a}
+    .brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.18em;font-weight:700}.links{display:flex;gap:26px;color:#c5d3e4;font-size:13px;font-weight:700}.links a:hover{color:var(--cyan)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 19px;border-radius:8px;background:var(--blue);font-size:13px;font-weight:800;letter-spacing:.02em;border:1px solid #5cb4ff55;transition:.2s;cursor:pointer}.btn:hover{transform:translateY(-2px);filter:brightness(1.12)}.btn.ghost{background:transparent;border-color:var(--line)}
+    .hero{position:relative;overflow:hidden;padding:105px 0 92px;background:radial-gradient(ellipse at 80% 35%,#14599a55,transparent 42%),linear-gradient(115deg,#08172b 5%,#0b2340 62%,#0b3157)}
+    .hero:after{content:"";position:absolute;inset:0;opacity:.14;background-image:linear-gradient(120deg,transparent 48%,#8bcaff 49%,transparent 50%);background-size:70px 70px;pointer-events:none}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:45px;position:relative;z-index:1}
+    .eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase}.hero h1{font-family:'Barlow Condensed',Impact,sans-serif;font-size:clamp(58px,8vw,100px);line-height:.9;letter-spacing:.015em;margin:17px 0 22px;text-transform:uppercase}.hero h1 span{color:var(--cyan)}.hero p{max-width:590px;color:#c1d1e3;font-size:16px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.hero-card{border:1px solid #8dcaff36;border-radius:18px;padding:28px;background:linear-gradient(145deg,#163b60c9,#0b1b30e8);box-shadow:0 25px 70px #0005;transform:rotate(1deg)}
+    .seal{width:112px;height:112px;border:2px solid #75caff;border-radius:50%;margin:0 auto 22px;display:grid;place-items:center;text-align:center;color:#cceaff;font-family:'Barlow Condensed';font-size:22px;font-weight:900;line-height:1.05;box-shadow:inset 0 0 0 7px #75caff1c}
+    .hero-card h3{text-align:center;font-family:'Barlow Condensed';font-size:28px;margin:0;text-transform:uppercase}.hero-card p{text-align:center;font-size:12px;margin:6px auto 0;color:var(--muted)}
+    section{padding:78px 0}.section-head{max-width:650px;margin-bottom:34px}.section-head .eyebrow{margin-bottom:8px}.section-head h2{font-family:'Barlow Condensed';font-size:46px;line-height:1.05;text-transform:uppercase;margin:0 0 10px}.section-head p{color:var(--muted);margin:0}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:24px;min-height:190px}.icon{height:42px;width:42px;border-radius:10px;background:#2387e826;color:var(--cyan);display:grid;place-items:center;font-size:20px;margin-bottom:18px}.card h3{font-family:'Barlow Condensed';font-size:25px;text-transform:uppercase;margin:0 0 7px}.card p{color:var(--muted);font-size:13px;margin:0}
+    .join{background:linear-gradient(120deg,#0c2541,#0b1c31);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.step{padding:22px;border-left:2px solid var(--blue);background:#ffffff08}.num{font-family:'Barlow Condensed';font-size:36px;color:var(--cyan)}.step h3{margin:5px 0;font-size:16px}.step p{margin:0;color:var(--muted);font-size:13px}
+    .rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.rule{display:flex;gap:14px;padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:10px}.rule b{color:var(--cyan);font-size:14px}.rule span{font-size:13px;color:#c3d1e1}
+    .cta{padding:54px 30px;border-radius:16px;text-align:center;background:linear-gradient(120deg,#13518a,#0b2b4b);border:1px solid #70c3ff42}.cta h2{font:800 42px 'Barlow Condensed';text-transform:uppercase;margin:0 0 8px}.cta p{color:#d0e2f4;margin:0 auto 22px;max-width:550px;font-size:14px}
+    footer{padding:26px 0;border-top:1px solid var(--line);color:#91a7bf;font-size:11px}.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    @media(max-width:760px){.links{display:none}.hero{padding:76px 0}.hero-grid{grid-template-columns:1fr}.hero-card{max-width:360px}.cards,.steps{grid-template-columns:1fr}.rules-grid{grid-template-columns:1fr}.hero h1{font-size:68px}section{padding:58px 0}}
+  </style>
+</head>
+<body>
+<header class="topbar"><div class="wrap nav">
+  <a class="brand" href="#home"><span class="crest">FS</span><span>FLORIDA STATE RP<small>ER:LC ROLEPLAY COMMUNITY</small></span></a>
+  <nav class="links"><a href="#departments">DEPARTMENTS</a><a href="#join">HOW TO JOIN</a><a href="#rules">RULES</a></nav>
+  <a class="btn" href="#join">GET STARTED</a>
+</div></header>
+<main>
+  <section class="hero" id="home"><div class="wrap hero-grid">
+    <div><div class="eyebrow">Emergency Response: Liberty County</div><h1>Serve with<br><span>purpose.</span></h1>
+      <p>Welcome to Florida State Roleplay, an ER:LC community built around organised sessions, teamwork, and immersive roleplay. Find your place, learn the standards, and be part of the story.</p>
+      <div class="actions"><a class="btn" href="#join">HOW TO JOIN <span aria-hidden="true">&nbsp;↗</span></a><a class="btn ghost" href="#departments">EXPLORE DEPARTMENTS</a></div>
+    </div>
+    <aside class="hero-card"><div class="seal">FLORIDA<br>STATE<br>RP</div><h3>One community.<br>Many ways to serve.</h3><p>Professional roleplay starts with respect, preparation and teamwork.</p></aside>
+  </div></section>
+  <section id="departments"><div class="wrap"><div class="section-head"><div class="eyebrow">Find your role</div><h2>Explore the departments</h2><p>Choose a role that fits your interests. Department availability and recruitment status should be confirmed in the community Discord.</p></div>
+    <div class="cards">
+      <article class="card"><div class="icon">🚓</div><h3>Law Enforcement</h3><p>Patrol, traffic enforcement and coordinated public-safety roleplay.</p></article>
+      <article class="card"><div class="icon">🚒</div><h3>Fire & Rescue</h3><p>Fire response, rescue scenarios and teamwork during emergency calls.</p></article>
+      <article class="card"><div class="icon">🚑</div><h3>Emergency Medical</h3><p>Patient care scenarios, scene coordination and emergency medical roleplay.</p></article>
+      <article class="card"><div class="icon">🚗</div><h3>Civilian Operations</h3><p>Create believable scenes and help make every session feel alive.</p></article>
+      <article class="card"><div class="icon">🛣️</div><h3>Department Support</h3><p>Help sessions run smoothly through communications and coordination.</p></article>
+      <article class="card"><div class="icon">★</div><h3>Staff Team</h3><p>Support members, uphold community standards and assist with moderation.</p></article>
+    </div>
+  </div></section>
+  <section class="join" id="join"><div class="wrap"><div class="section-head"><div class="eyebrow">Your next step</div><h2>How to get started</h2><p>Follow the community's official joining process. Replace the placeholder community link below with your real invite before sharing the site.</p></div>
+    <div class="steps">
+      <article class="step"><div class="num">01</div><h3>Join the community</h3><p>Use the official Discord invite supplied by the Florida State Roleplay team.</p></article>
+      <article class="step"><div class="num">02</div><h3>Read the rules</h3><p>Review the server rules, session expectations and department requirements.</p></article>
+      <article class="step"><div class="num">03</div><h3>Attend a session</h3><p>Follow staff instructions, choose an available role and enjoy the roleplay.</p></article>
+    </div>
+    <div class="actions" style="justify-content:center;margin-top:28px"><a class="btn" href="https://www.roblox.com/games/2534724415/Emergency-Response-Liberty-County" target="_blank" rel="noopener">OPEN ER:LC ON ROBLOX ↗</a><a class="btn ghost" href="#rules">READ COMMUNITY RULES</a></div>
+  </div></section>
+  <section id="rules"><div class="wrap"><div class="section-head"><div class="eyebrow">Keep it respectful</div><h2>Community standards</h2><p>These are starter guidelines. The official Discord rules and staff instructions always take priority.</p></div>
+    <div class="rules-grid">
+      <div class="rule"><b>01</b><span>Respect every member. Harassment, discrimination and personal attacks are not acceptable.</span></div>
+      <div class="rule"><b>02</b><span>Follow staff instructions and use the correct channels for questions or reports.</span></div>
+      <div class="rule"><b>03</b><span>Keep roleplay realistic and avoid disrupting other players' scenes.</span></div>
+      <div class="rule"><b>04</b><span>Do not exploit, cheat, spam or intentionally interfere with sessions.</span></div>
+      <div class="rule"><b>05</b><span>Keep personal information private, including your own and other members'.</span></div>
+      <div class="rule"><b>06</b><span>Represent the community responsibly in and outside organised sessions.</span></div>
+    </div>
+  </div></section>
+  <section><div class="wrap"><div class="cta"><div class="eyebrow">Florida State Roleplay</div><h2>Ready to join the action?</h2><p>Connect with the community, check recruitment announcements and get the information you need before your first session.</p><a class="btn" href="#join">START HERE ↑</a></div></div></section>
+</main>
+<footer><div class="wrap foot"><span>© <span id="year"></span> Florida State Roleplay. Community website.</span><span>Not affiliated with Roblox or Emergency Response: Liberty County.</span></div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body></html>
