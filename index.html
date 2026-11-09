@@ -13,7 +13,7 @@
     a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
     .topbar{height:76px;display:flex;align-items:center;border-bottom:1px solid var(--line);background:rgba(7,20,38,.92);position:sticky;top:0;z-index:10;backdrop-filter:blur(14px)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.04em}
-    .crest{height:42px;width:42px;border-radius:12px;background:linear-gradient(145deg,#2d9cff,#1253a0);display:grid;place-items:center;font-family:'Barlow Condensed';font-size:22px;font-weight:900;box-shadow:0 8px 24px #087be64a}
+    .crest{height:48px;width:48px;object-fit:contain;display:block;mix-blend-mode:screen;filter:drop-shadow(0 5px 12px #0006)}
     .brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.18em;font-weight:700}.links{display:flex;gap:26px;color:#c5d3e4;font-size:13px;font-weight:700}.links a:hover{color:var(--cyan)}
     .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 19px;border-radius:8px;background:var(--blue);font-size:13px;font-weight:800;letter-spacing:.02em;border:1px solid #5cb4ff55;transition:.2s;cursor:pointer}.btn:hover{transform:translateY(-2px);filter:brightness(1.12)}.btn.ghost{background:transparent;border-color:var(--line)}
     .hero{position:relative;overflow:hidden;padding:105px 0 92px;background:radial-gradient(ellipse at 80% 35%,#14599a55,transparent 42%),linear-gradient(115deg,#08172b 5%,#0b2340 62%,#0b3157)}
@@ -21,7 +21,7 @@
     .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:45px;position:relative;z-index:1}
     .eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase}.hero h1{font-family:'Barlow Condensed',Impact,sans-serif;font-size:clamp(58px,8vw,100px);line-height:.9;letter-spacing:.015em;margin:17px 0 22px;text-transform:uppercase}.hero h1 span{color:var(--cyan)}.hero p{max-width:590px;color:#c1d1e3;font-size:16px}
     .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.hero-card{border:1px solid #8dcaff36;border-radius:18px;padding:28px;background:linear-gradient(145deg,#163b60c9,#0b1b30e8);box-shadow:0 25px 70px #0005;transform:rotate(1deg)}
-    .seal{width:112px;height:112px;border:2px solid #75caff;border-radius:50%;margin:0 auto 22px;display:grid;place-items:center;text-align:center;color:#cceaff;font-family:'Barlow Condensed';font-size:22px;font-weight:900;line-height:1.05;box-shadow:inset 0 0 0 7px #75caff1c}
+    .seal{width:190px;height:170px;object-fit:contain;display:block;margin:0 auto 14px;mix-blend-mode:screen;filter:drop-shadow(0 8px 18px #0008)}
     .hero-card h3{text-align:center;font-family:'Barlow Condensed';font-size:28px;margin:0;text-transform:uppercase}.hero-card p{text-align:center;font-size:12px;margin:6px auto 0;color:var(--muted)}
     section{padding:78px 0}.section-head{max-width:650px;margin-bottom:34px}.section-head .eyebrow{margin-bottom:8px}.section-head h2{font-family:'Barlow Condensed';font-size:46px;line-height:1.05;text-transform:uppercase;margin:0 0 10px}.section-head p{color:var(--muted);margin:0}
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:24px;min-height:190px}.icon{height:42px;width:42px;border-radius:10px;background:#2387e826;color:var(--cyan);display:grid;place-items:center;font-size:20px;margin-bottom:18px}.card h3{font-family:'Barlow Condensed';font-size:25px;text-transform:uppercase;margin:0 0 7px}.card p{color:var(--muted);font-size:13px;margin:0}
@@ -34,7 +34,7 @@
 </head>
 <body>
 <header class="topbar"><div class="wrap nav">
-  <a class="brand" href="https://discord.gg/floridarpp1"><span class="crest">FS</span><span>FLORIDA STATE RP<small>ER:LC ROLEPLAY COMMUNITY</small></span></a>
+  <a class="brand" href="https://discord.gg/floridarpp1"><img class="crest" src="assets/florida-logo.png" alt="Florida State Roleplay logo"><span>FLORIDA STATE RP<small>ER:LC ROLEPLAY COMMUNITY</small></span></a>
   <nav class="links"><a href="#departments">DEPARTMENTS</a><a href="#join">HOW TO JOIN</a><a href="#rules">RULES</a></nav>
   <a class="btn" href="#join">GET STARTED</a>
 </div></header>
@@ -44,7 +44,7 @@
       <p>Welcome to Florida State Roleplay, an ER:LC community built around organised sessions, teamwork, and immersive roleplay. Find your place, learn the standards, and be part of the story.</p>
       <div class="actions"><a class="btn" href="#join">HOW TO JOIN <span aria-hidden="true">&nbsp;↗</span></a><a class="btn ghost" href="#departments">EXPLORE DEPARTMENTS</a></div>
     </div>
-    <aside class="hero-card"><div class="seal">FLORIDA<br>STATE<br>RP</div><h3>One community.<br>Many ways to serve.</h3><p>Professional roleplay starts with respect, preparation and teamwork.</p></aside>
+    <aside class="hero-card"><img class="seal" src="assets/florida-logo.png" alt="Florida State Roleplay logo"><h3>One community.<br>Many ways to serve.</h3><p>Professional roleplay starts with respect, preparation and teamwork.</p></aside>
   </div></section>
   <section id="departments"><div class="wrap"><div class="section-head"><div class="eyebrow">Find your role</div><h2>Explore the departments</h2><p>Choose a role that fits your interests. Department availability and recruitment status should be confirmed in the community Discord.</p></div>
     <div class="cards">
