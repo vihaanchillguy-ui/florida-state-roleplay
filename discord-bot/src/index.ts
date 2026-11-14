@@ -74,8 +74,8 @@ async function createPrivateChannel(env: Env, guildId: string, name: string, use
   const staffRoles = env.STAFF_ROLE_IDS.split(",").map(x => x.trim()).filter(Boolean);
   const overwrites = [
     { id: guildId, type: 0, deny: "1024" },
-    { id: userId, type: 1, allow: "1024" },
-    ...staffRoles.map(id => ({ id, type: 0, allow: "1024" }))
+    { id: userId, type: 1, allow: "68608" },
+    ...staffRoles.map(id => ({ id, type: 0, allow: "68608" }))
   ];
   return discord(env, `/guilds/${guildId}/channels`, {
     method: "POST", body: JSON.stringify({ name, type: 0, topic, permission_overwrites: overwrites })
@@ -89,7 +89,7 @@ async function log(env: Env, content: string) {
 }
 async function handleCommand(i: Interaction, env: Env) {
   const name = i.data?.name;
-  if (name === "setup-support" || name === "setup-applications") {
+  if (name === "remove-applications") {\n    if (!staff(i, env)) return ephemeral("You do not have permission to remove the application panel.");\n    const opts = i.data?.options || [];\n    const channelId = opts.find((o: any) => o.name === "channel")?.value;\n    const messageId = opts.find((o: any) => o.name === "message_id")?.value;\n    if (!channelId || !messageId) return ephemeral("Provide the channel and message ID of the application panel.");\n    await discord(env, `/channels/${channelId}/messages/${messageId}`, { method: "DELETE" });\n    return ephemeral("The staff application panel has been removed. Existing applications are unaffected.");\n  }\n  if (name === "setup-support" || name === "setup-applications") {
     if (!staff(i, env)) return ephemeral("You do not have permission to configure FSRP panels.");
     if (!i.channel_id) return ephemeral("Run this command inside a server channel.");
     if (name === "setup-support") {
@@ -216,7 +216,7 @@ async function handleModal(i: Interaction, env: Env) {
   }
   if (id.startsWith("application:reason-submit:")) {
     if (!staff(i, env)) return ephemeral("Only authorised staff can review applications.");
-    const [, , , decision, appId] = id.split(":");
+    const [, , decision, appId] = id.split(":");
     const app = await env.DB.prepare("SELECT * FROM applications WHERE id = ? AND status = 'pending'").bind(appId).first<any>();
     if (!app) return ephemeral("This application is no longer pending.");
     const reviewer = userId;
