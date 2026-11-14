@@ -5,7 +5,7 @@ if (!token || !appId || !guildId) throw new Error("Set BOT_TOKEN, APPLICATION_ID
 
 const commands = [
   { name: "setup-support", description: "Publish the FSRP support ticket panel" },
-  { name: "setup-applications", description: "Publish the FSRP staff application panel" },
+  { name: "setup-applications", description: "Publish the FSRP staff application panel" },\n  { name: "remove-applications", description: "Remove a published FSRP staff application panel", options: [\n    { type: 7, name: "channel", description: "Channel containing the application panel", required: true },\n    { type: 3, name: "message_id", description: "Message ID of the application panel", required: true }\n  ] },
   {
     name: "staff", description: "FSRP staff management commands", options: [
       { type: 1, name: "infraction", description: "Record a staff infraction", options: [
