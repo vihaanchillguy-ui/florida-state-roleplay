@@ -1,0 +1,17 @@
+{
+  "name": "fsrp-discord-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:create": "wrangler d1 create fsrp-discord-bot",
+    "db:init": "wrangler d1 execute fsrp-discord-bot --remote --file=./schema.sql",
+    "register": "node register-commands.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0",
+    "typescript": "^5.7.0"
+  }
+}
