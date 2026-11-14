@@ -62,6 +62,7 @@ Set `BOT_TOKEN`, `APPLICATION_ID`, and `GUILD_ID` as local environment variables
 Commands are registered to the configured server:
 - `/setup-support`
 - `/setup-applications`
+- `/remove-applications` (requires the panel channel and message ID)
 - `/staff infraction`
 - `/staff promotion`
 
