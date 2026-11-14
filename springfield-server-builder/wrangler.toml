@@ -1,0 +1,6 @@
+name = "springfield-roleplay-server-builder"
+main = "src/index.ts"
+compatibility_date = "2026-11-15"
+
+[vars]
+CLIENT_ID = "ADD_DISCORD_APPLICATION_ID"
