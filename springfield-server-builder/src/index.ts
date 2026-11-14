@@ -4,7 +4,11 @@ export interface Env {
   CLIENT_ID: string;
 }
 const API = "https://discord.com/api/v10";
-const P = { VIEW: "1024", SEND: "2048", READ_HISTORY: "65536", CONNECT: "1048576", SPEAK: "2097152", MANAGE_CHANNELS: "16", MANAGE_ROLES: "268435456" };
+const P = { VIEW: 1024, SEND: 2048, READ_HISTORY: 65536, CONNECT: 1048576, SPEAK: 2097152 };
+const CHAT = String(P.VIEW + P.SEND + P.READ_HISTORY);
+const READ = String(P.VIEW + P.READ_HISTORY);
+const VOICE = String(P.VIEW + P.CONNECT + P.SPEAK);
+const ALL = String(P.VIEW + P.SEND + P.READ_HISTORY + P.CONNECT + P.SPEAK);
 const json = (data: unknown, status = 200) => new Response(JSON.stringify(data), { status, headers: { "content-type": "application/json" } });
 function hexToBytes(hex: string) { return new Uint8Array(hex.match(/.{1,2}/g)!.map(x => parseInt(x, 16))); }
 async function verify(req: Request, raw: string, key: string) {
@@ -39,16 +43,16 @@ async function setup(env: Env, guild: string) {
   const fire = await createRole(env, guild, "Fire & Rescue", 0xc0392b);
   const ems = await createRole(env, guild, "EMS", 0x2ecc71);
   const overwrites = (allowVerified = true, allowStaff = true) => [
-    { id: everyone.id, type: 0, deny: P.VIEW, allow: "0" },
-    ...(allowVerified ? [{ id: verified.id, type: 0, allow: P.VIEW + "," + P.SEND + "," + P.READ_HISTORY + "," + P.CONNECT + "," + P.SPEAK, deny: "0" }] : []),
-    ...(allowStaff ? [{ id: staff.id, type: 0, allow: P.VIEW + "," + P.SEND + "," + P.READ_HISTORY + "," + P.CONNECT + "," + P.SPEAK, deny: "0" }] : [])
+    { id: everyone.id, type: 0, deny: String(P.VIEW), allow: "0" },
+    ...(allowVerified ? [{ id: verified.id, type: 0, allow: ALL, deny: "0" }] : []),
+    ...(allowStaff ? [{ id: staff.id, type: 0, allow: CHAT + "," + P.CONNECT + "," + P.SPEAK, deny: "0" }] : [])
   ];
   const publicOverwrites = [
-    { id: everyone.id, type: 0, allow: P.VIEW + "," + P.READ_HISTORY, deny: P.SEND },
-    { id: staff.id, type: 0, allow: P.VIEW + "," + P.SEND + "," + P.READ_HISTORY, deny: "0" }
+    { id: everyone.id, type: 0, allow: READ, deny: String(P.SEND) },
+    { id: staff.id, type: 0, allow: CHAT, deny: "0" }
   ];
   const ticketOverwrites = [
-    { id: everyone.id, type: 0, allow: P.VIEW + "," + P.READ_HISTORY, deny: P.SEND },
+    { id: everyone.id, type: 0, allow: READ, deny: P.SEND },
     { id: staff.id, type: 0, allow: P.VIEW + "," + P.SEND + "," + P.READ_HISTORY, deny: "0" }
   ];
   const categories: { name: string; channels: [string, 0 | 2][]; mode: "public" | "verified" | "staff" | "department" | "ticket" }[] = [
@@ -75,7 +79,11 @@ async function setup(env: Env, guild: string) {
     else ow = overwrites();
     const parent = await createCategory(env, guild, cat.name, ow); made.push(cat.name);
     for (const [name, type] of cat.channels) {
-      await createChannel(env, guild, name, type, parent.id);
+      let channelOW = ow;
+      if (name === "police-chat" || name === "Police Radio" || name === "Traffic Stop 1" || name === "Traffic Stop 2" || name === "Traffic Stop 3" || name === "police-office") channelOW = [{ id: everyone.id, type: 0, deny: String(P.VIEW), allow: "0" }, { id: police.id, type: 0, allow: type === 2 ? VOICE : ALL, deny: "0" }, { id: staff.id, type: 0, allow: ALL, deny: "0" }];
+      if (name === "fire-rescue-chat" || name === "Fire Radio" || name === "fire-rescue-office") channelOW = [{ id: everyone.id, type: 0, deny: String(P.VIEW), allow: "0" }, { id: fire.id, type: 0, allow: type === 2 ? VOICE : ALL, deny: "0" }, { id: staff.id, type: 0, allow: ALL, deny: "0" }];
+      if (name === "ems-chat" || name === "EMS Radio" || name === "ems-office") channelOW = [{ id: everyone.id, type: 0, deny: String(P.VIEW), allow: "0" }, { id: ems.id, type: 0, allow: type === 2 ? VOICE : ALL, deny: "0" }, { id: staff.id, type: 0, allow: ALL, deny: "0" }];
+      await createChannel(env, guild, name, type, parent.id, channelOW);
     }
   }
   return { made, roles: [verified.name, staff.name, police.name, fire.name, ems.name] };
